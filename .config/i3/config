@@ -180,7 +180,7 @@ bindsym XF86MonBrightnessUp exec $ns xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec $ns xbacklight -dec 5
 
 # toggle bluetooth audio receiver
-bindsym XF86Calculator exec $ns /home/joran/.config/i3/bluetooth_connect.sh
+bindsym XF86Calculator exec $ns $HOME/.config/i3/bluetooth_connect.sh
 
 # cycle workspace existing and non-existing
 bindsym $mod+comma workspace prev
@@ -208,7 +208,7 @@ exec $ns /usr/lib/kdeconnectd
 exec $ns unclutter --timeout 1
 # exec_always $ns feh --bg-scale ~/Pictures/mountain.jpeg
 exec_always $ns hsetroot -solid "#282828"
-exec_always $ns /home/joran/.config/i3/alternating_layouts.py
+exec_always $ns $HOME/.config/i3/alternating_layouts.py
 
 # switch Escape and Caps Lock
 exec_always $ns xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"   #this will make Esc to act as Caps Lock
