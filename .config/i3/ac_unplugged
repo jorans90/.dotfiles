@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+while true
+do
+    status=$(acpi -b | awk '{print $3}' | cut -d ',' -f1)
+    sleep 5
+    if [ $status == 'Discharging' ]
+    then
+        notify-send -u critical "POWER CABLE UNPLUGGED! " 'Please insert the power cable quickly..'
+        sleep 10
+    fi
+done

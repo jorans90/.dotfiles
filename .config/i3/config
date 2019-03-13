@@ -1,4 +1,4 @@
-################################################################################
+##############################################################################
 # i3 config
 ################################################################################
 
@@ -204,6 +204,8 @@ exec $ns nm-applet
 exec $ns redshift -l 52:7
 exec_always $ns numlockx on
 exec_always $ns compton -b
+exec_always $ns dunst
+exec $ns $HOME/.config/i3/ac_unplugged
 exec $ns /usr/lib/kdeconnectd
 exec $ns unclutter --timeout 1
 # exec_always $ns feh --bg-scale ~/Pictures/mountain.jpeg
