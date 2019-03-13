@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+
+import i3
+import argparse
+
+
+def get_direction():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="Insert 'prev' or 'next' as direction.", type=str)
+    args = parser.parse_args()
+    return args.dir
+
+
+def find_current_workspace(workspaces):
+    for workspace in workspaces:
+        if workspace['visible'] == True and workspace['focused'] == True:
+            return workspace['name']
+
+
+def move_to_workspace(workspaceslist, index, direction):
+    if direction == 'next':
+        dir = 1
+    elif direction == 'prev':
+        dir = -1
+    else:
+        print("Wrong input.\nInsert 'prev' or 'next' as  direction.")
+    if index + dir >= len(workspaceslist):
+        idx = 0
+    else:
+        idx = index + dir
+    i3.workspace(workspaceslist[idx])
+
+
+def main():
+    # make a list of all workspacenames according i3 config
+    workspaceslist = list(range(1, 10))
+    workspaceslist.append('Spotify')
+    # finding current workspace
+    workspaces = i3.get_workspaces()
+    workspace_current = find_current_workspace(workspaces)
+    # find index of the workspace name
+    workspaceslist = [str(ws) for ws in workspaceslist] # make all string type
+    index = workspaceslist.index(workspace_current)
+    direction = get_direction()
+    move_to_workspace(workspaceslist, index, direction)
+
+
+if __name__ == '__main__':
+    main()
