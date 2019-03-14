@@ -55,7 +55,7 @@ alias zshconfig="$EDITOR ~/.zshrc && source ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias i3config="$EDITOR ~/.config/i3/config"
 alias vimrc="vim ~/.vimrc"
-alias s='$HOME/.config/i3/i3-swallow'
+alias s='$HOME/.config/i3/i3-swallow -d'
 alias mpv='s mpv'
 alias vlc='s vlc'
 alias mplayer='s mplayer'
@@ -69,6 +69,7 @@ alias rr='source ranger'
 alias lsgrep='ls -a | grep -i'
 alias subs='subliminal download -l en *' 
 alias wttr='wttr enschede'
+alias ace='s acestream-launcher $(xsel --clipboard --output | sed q1)'
 
 alias sdn='sudo shutdown now'
 alias rbt='sudo reboot'

@@ -10,6 +10,7 @@ set nowritebackup
 set clipboard=unnamedplus
 set mouse=a
 set encoding=utf-8
+let @*=@"
 
 " Set tabs to 4 spaces and stuff
 set tabstop=4
