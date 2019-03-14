@@ -41,6 +41,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
+Plugin 'chrisbra/colorizer'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,3 +78,6 @@ let g:jedi#popup_on_dot = 1
 let g:SuperTabDefaultCompletionType = "context"
 
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
+
+" autoload Colorizer
+let g:colorizer_colornames = 0

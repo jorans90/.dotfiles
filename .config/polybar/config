@@ -220,7 +220,8 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+;label-connected = %essid%
+label-connected = "%{A1:uxterm -fa 'Monaco for Powerline' -fs 9 -class FXTerm -e nmtui:} %essid%%{A}"
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -259,7 +260,7 @@ date-alt = %
 date = " %d-%m-%Y"
 
 time-alt = %H:%M
-time = %H:%M:%S
+time = %H:%M
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -298,11 +299,11 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
-label-volume = 
+label-volume =  
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
+format-muted-prefix = "  "
 label-muted = sound muted
 
 bar-volume-width = 10

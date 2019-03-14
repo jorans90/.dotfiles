@@ -1,13 +1,14 @@
-##############################################################################
+################################################################################
 # i3 config
 ################################################################################
 
 # set mod key to alt
-set $ns --no-startup-id
 set $mod Mod4
-set $terminal uxterm -fa 'Monnaco for Powerline' -fs 9
+set $ns --no-startup-id
+set $font Monaco for Powerline
+set $terminal uxterm -fa '$font' -fs 9
 set $Locker  betterlockscreen -l dimblur -t "Enter password.." && sleep 1
-font pango:Monaco for Powerline 9
+font pango:$font 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -23,9 +24,15 @@ bindsym $mod+Shift+q kill
 # do not focus on window without a mouseclick
 focus_follows_mouse no
 
+# workspace toggle
+workspace_auto_back_and_forth yes
+
+# set border size
+for_window [class=".*"] border pixel 2
+
 # start rofi
-bindsym $mod+x exec rofi -show run -matching fuzzy
-bindsym $mod+Tab exec rofi -show 
+bindsym $mod+x exec rofi -show run -matching fuzzy -font "$font 11"
+bindsym $mod+Tab exec rofi -show window -font "$font 11"
 
 # change focus
 bindsym $mod+h focus left
@@ -151,12 +158,14 @@ set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
 
+
 # blue gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $darkgray $purple $darkgray
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.focused          $blue $blue $darkgray $purple $blue
+client.focused_inactive $darkgray $yellow $darkgray $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
+
 
 # start Polybar
 exec_always $ns $HOME/.config/polybar/launch.sh
@@ -165,7 +174,7 @@ exec_always $ns $HOME/.config/polybar/launch.sh
 smart_gaps on
 gaps inner 5
 gaps outer 5
-new_window pixel 3
+new_window pixel 5
 
 # custom keybindings for launching applications
 bindsym $mod+b exec $ns google-chrome-stable
@@ -236,7 +245,7 @@ set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+u) update & shu
 mode "$mode_system" {
     bindsym l exec $ns $Locker, mode "default"
     bindsym e exec $ns i3-msg exit, mode "default"
-    bindsym Shift+u exec $ns  xterm -fa 'Monaco for Powerline' -fs 9 -class "FXTerm" -e "echo 'Updating & shuting down...\nPlease Enter your password' && sudo pacman -Syu --noconfirm && systemctl poweroff -i", mode "default"
+    bindsym Shift+u exec $ns  xterm -fa '$font' -fs 9 -class "FXTerm" -e "echo 'Updating & shuting down...\nPlease Enter your password' && sudo pacman -Syu --noconfirm && systemctl poweroff -i", mode "default"
     bindsym r exec $ns systemctl reboot, mode "default"
     bindsym Shift+s exec $ns systemctl poweroff -i, mode "default"  
 
